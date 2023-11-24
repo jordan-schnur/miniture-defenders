@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyopyt1pd05ju"]
+
+[ext_resource type="PackedScene" uid="uid://0dtomvtpuhqo" path="res://map.tscn" id="1_67ku3"]
+[ext_resource type="PackedScene" uid="uid://bevkyxnan4xv2" path="res://UI.tscn" id="2_sbg7k"]
+
+[node name="main" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_67ku3")]
+
+[node name="UI" parent="." instance=ExtResource("2_sbg7k")]
