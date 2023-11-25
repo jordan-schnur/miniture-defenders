@@ -1,10 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyopyt1pd05ju"]
+[gd_scene load_steps=4 format=3 uid="uid://dyopyt1pd05ju"]
 
 [ext_resource type="PackedScene" uid="uid://0dtomvtpuhqo" path="res://map.tscn" id="1_67ku3"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="2_4nlen"]
 [ext_resource type="PackedScene" uid="uid://bevkyxnan4xv2" path="res://UI.tscn" id="2_sbg7k"]
 
 [node name="main" type="Node2D"]
 
 [node name="Map" parent="." instance=ExtResource("1_67ku3")]
 
-[node name="UI" parent="." instance=ExtResource("2_sbg7k")]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(632, 361)
+script = ExtResource("2_4nlen")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Camera2D"]
+offset_left = -606.0
+offset_top = -339.0
+offset_right = -566.0
+offset_bottom = -299.0
+alignment_horizontal = 0
+alignment_vertical = 0
+
+[node name="UI" parent="Camera2D/AspectRatioContainer" instance=ExtResource("2_sbg7k")]
+layout_mode = 2

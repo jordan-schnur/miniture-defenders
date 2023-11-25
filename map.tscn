@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://0dtomvtpuhqo"]
+[gd_scene load_steps=8 format=3 uid="uid://0dtomvtpuhqo"]
 
 [ext_resource type="Texture2D" uid="uid://cpk077nia5r08" path="res://kenney_tower-defense-top-down/Tilesheet/towerDefense_tilesheet@2.png" id="1_i0o0f"]
+[ext_resource type="Script" path="res://map.gd" id="1_mwy1p"]
+[ext_resource type="Script" path="res://Towers.gd" id="2_7jcic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_81q4h"]
 texture = ExtResource("1_i0o0f")
@@ -22,8 +24,11 @@ texture_region_size = Vector2i(128, 128)
 14:0/0 = 0
 15:0/0 = 0
 16:0/0 = 0
+16:0/0/custom_data_0 = "support"
 17:0/0 = 0
+17:0/0/custom_data_0 = "aoe"
 18:0/0 = 0
+18:0/0/custom_data_0 = "debuff"
 19:0/0 = 0
 20:0/0 = 0
 21:0/0 = 0
@@ -45,12 +50,18 @@ texture_region_size = Vector2i(128, 128)
 14:1/0 = 0
 15:1/0 = 0
 16:1/0 = 0
+16:1/0/custom_data_0 = "support"
 17:1/0 = 0
+17:1/0/custom_data_0 = "aoe"
 18:1/0 = 0
+18:1/0/custom_data_0 = "debuff"
 19:1/0 = 0
 20:1/0 = 0
+20:1/0/custom_data_0 = "support"
 21:1/0 = 0
+21:1/0/custom_data_0 = "aoe"
 22:1/0 = 0
+22:1/0/custom_data_0 = "debuff"
 0:2/0 = 0
 1:2/0 = 0
 2:2/0 = 0
@@ -68,12 +79,18 @@ texture_region_size = Vector2i(128, 128)
 14:2/0 = 0
 15:2/0 = 0
 16:2/0 = 0
+16:2/0/custom_data_0 = "support"
 17:2/0 = 0
+17:2/0/custom_data_0 = "aoe"
 18:2/0 = 0
+18:2/0/custom_data_0 = "debuff"
 19:2/0 = 0
 20:2/0 = 0
+20:2/0/custom_data_0 = "support"
 21:2/0 = 0
+21:2/0/custom_data_0 = "aoe"
 22:2/0 = 0
+22:2/0/custom_data_0 = "debuff"
 0:3/0 = 0
 1:3/0 = 0
 2:3/0 = 0
@@ -91,12 +108,18 @@ texture_region_size = Vector2i(128, 128)
 14:3/0 = 0
 15:3/0 = 0
 16:3/0 = 0
+16:3/0/custom_data_0 = "support"
 17:3/0 = 0
+17:3/0/custom_data_0 = "aoe"
 18:3/0 = 0
+18:3/0/custom_data_0 = "debuff"
 19:3/0 = 0
 20:3/0 = 0
+20:3/0/custom_data_0 = "support"
 21:3/0 = 0
+21:3/0/custom_data_0 = "aoe"
 22:3/0 = 0
+22:3/0/custom_data_0 = "debuff"
 0:4/0 = 0
 1:4/0 = 0
 2:4/0 = 0
@@ -114,12 +137,18 @@ texture_region_size = Vector2i(128, 128)
 14:4/0 = 0
 15:4/0 = 0
 16:4/0 = 0
+16:4/0/custom_data_0 = "support"
 17:4/0 = 0
+17:4/0/custom_data_0 = "aoe"
 18:4/0 = 0
+18:4/0/custom_data_0 = "debuff"
 19:4/0 = 0
 20:4/0 = 0
+20:4/0/custom_data_0 = "support"
 21:4/0 = 0
+21:4/0/custom_data_0 = "aoe"
 22:4/0 = 0
+22:4/0/custom_data_0 = "debuff"
 0:5/0 = 0
 1:5/0 = 0
 2:5/0 = 0
@@ -307,6 +336,8 @@ texture_region_size = Vector2i(128, 128)
 
 [sub_resource type="TileSet" id="TileSet_3bbso"]
 tile_size = Vector2i(128, 128)
+custom_data_layer_0/name = "tower_type"
+custom_data_layer_0/type = 4
 sources/1 = SubResource("TileSetAtlasSource_81q4h")
 
 [sub_resource type="Curve2D" id="Curve2D_tiwwo"]
@@ -319,6 +350,7 @@ point_count = 7
 size = Vector2(15, 82)
 
 [node name="Map" type="Node2D"]
+script = ExtResource("1_mwy1p")
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -333,6 +365,7 @@ tile_set = SubResource("TileSet_3bbso")
 cell_quadrant_size = 128
 format = 2
 layer_0/tile_data = PackedInt32Array(1048577, 1048577, 0, 983041, 1179649, 0, 983045, 1114113, 0, 917515, 1114113, 0, 655371, 1179649, 0, 851983, 1048577, 0, 196628, 1048577, 0, 458772, 1114113, 0, 458774, 1179649, 0, 196631, 1179649, 0, 720922, 1179649, 0, 851998, 1310721, 4, 917534, 1441793, 4, 983074, 1441793, 4, 1245217, 1441793, 4, 1245215, 1376257, 4, 786463, 1310721, 0, 720928, 1310721, 0, 917537, 1245185, 0, 786467, 1245185, 0, 524322, 1376257, 0, 589857, 1376257, 0, 1310754, 1376257, 0, 1245220, 1376257, 0, 1245219, 1376257, 0, 1310748, 1245185, 0)
+script = ExtResource("2_7jcic")
 
 [node name="Dec Layer" type="TileMap" parent="."]
 position = Vector2(25, 25)
