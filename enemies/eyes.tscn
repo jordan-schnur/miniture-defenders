@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqorunm34gscp"]
+
+[ext_resource type="Texture2D" uid="uid://y6h16blv34hw" path="res://kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile248.png" id="1_1a5pj"]
+[ext_resource type="Script" path="res://enemies/Enemy.gd" id="2_uedet"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y8sll"]
+radius = 15.0333
+
+[node name="eyes" type="Sprite2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("1_1a5pj")
+script = ExtResource("2_uedet")
+metadata/speed = 1
+metadata/progress = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_y8sll")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

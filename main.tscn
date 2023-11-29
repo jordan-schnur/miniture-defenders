@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyopyt1pd05ju"]
+[gd_scene load_steps=6 format=3 uid="uid://dyopyt1pd05ju"]
 
 [ext_resource type="PackedScene" uid="uid://0dtomvtpuhqo" path="res://map.tscn" id="1_67ku3"]
+[ext_resource type="Script" path="res://main.gd" id="1_r21jc"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="2_4nlen"]
 [ext_resource type="PackedScene" uid="uid://bevkyxnan4xv2" path="res://UI.tscn" id="2_sbg7k"]
+[ext_resource type="Script" path="res://Controller.gd" id="4_886yr"]
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_r21jc")
 
 [node name="Map" parent="." instance=ExtResource("1_67ku3")]
 
@@ -22,3 +25,12 @@ alignment_vertical = 0
 
 [node name="UI" parent="Camera2D/AspectRatioContainer" instance=ExtResource("2_sbg7k")]
 layout_mode = 2
+
+[node name="GameController" type="Node" parent="."]
+script = ExtResource("4_886yr")
+
+[node name="Timer" type="Timer" parent="GameController"]
+
+[connection signal="start_game" from="." to="GameController" method="_on_main_start_game"]
+[connection signal="place_tower" from="Map" to="GameController" method="_on_map_place_tower"]
+[connection signal="timeout" from="GameController/Timer" to="Camera2D/AspectRatioContainer/UI" method="_on_timer_timeout"]

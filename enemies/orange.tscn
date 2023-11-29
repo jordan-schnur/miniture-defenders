@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://i15qbrc70ane"]
+
+[ext_resource type="Texture2D" uid="uid://4buw37haoeke" path="res://kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile246.png" id="1_jx7wd"]
+
+[node name="orange" type="Sprite2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("1_jx7wd")
+metadata/speed = 0
