@@ -31,6 +31,8 @@ script = ExtResource("4_886yr")
 
 [node name="Timer" type="Timer" parent="GameController"]
 
-[connection signal="start_game" from="." to="GameController" method="_on_main_start_game"]
-[connection signal="place_tower" from="Map" to="GameController" method="_on_map_place_tower"]
+[connection signal="enemy_exited" from="Map" to="GameController" method="_on_map_enemy_exited"]
+[connection signal="request_tower_placement" from="Map" to="GameController" method="_on_map_request_tower_placement"]
+[connection signal="money_changed" from="GameController" to="Camera2D/AspectRatioContainer/UI" method="_on_game_controller_money_changed"]
+[connection signal="place_tower" from="GameController" to="Map" method="_on_game_controller_place_tower"]
 [connection signal="timeout" from="GameController/Timer" to="Camera2D/AspectRatioContainer/UI" method="_on_timer_timeout"]

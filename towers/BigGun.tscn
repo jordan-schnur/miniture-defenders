@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://x8soa0iooelt"]
+
+[ext_resource type="PackedScene" uid="uid://jfj72fucy626" path="res://towers/BaseTower.tscn" id="1_c3ed6"]
+[ext_resource type="Texture2D" uid="uid://digrlkl23k2jh" path="res://towers/assets/gun_base.png" id="2_2r5q4"]
+[ext_resource type="Texture2D" uid="uid://babhtckja0v8g" path="res://towers/assets/biggun1.png" id="2_ox4qs"]
+
+[node name="BigGun" instance=ExtResource("1_c3ed6")]
+
+[node name="Base" parent="." index="0"]
+texture = ExtResource("2_2r5q4")
+
+[node name="Tower" parent="." index="1"]
+texture = ExtResource("2_ox4qs")

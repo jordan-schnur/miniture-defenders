@@ -14,3 +14,4 @@ script = ExtResource("1_dxbya")
 shape = SubResource("CircleShape2D_jmdki")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)

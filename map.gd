@@ -1,6 +1,7 @@
 extends Node2D
 
-signal place_tower(tower_type)
+signal request_tower_placement(tower_type, position)
+signal enemy_exited()
 
 @export_category("Map Options")
 @export var towers_tile_map: TileMap
@@ -29,7 +30,7 @@ func _input(event):
 		var data = towers_tile_map.get_cell_tile_data(0, tile_coords);
 		
 		if data:
-			place_tower.emit(data.get_custom_data("tower_type"))
+			request_tower_placement.emit(data.get_custom_data("tower_type"), tile_coords)
 
 func move_enemy_along_path(enemy, progress):
 	var path = $Path2D/PathFollow2D
@@ -40,4 +41,19 @@ func move_enemy_along_path(enemy, progress):
 
 
 func _on_exit_area_entered(area):
-	print("Area Entered")
+	enemy_exited.emit()
+
+
+func _on_game_controller_place_tower(tower_type, position):
+	print("Hello, WOrld!")
+	var big_gun_scene = load("res://towers/BigGun.tscn")
+	
+	var big_gun_instance = big_gun_scene.instantiate()
+	
+	var localPos = towers_tile_map.map_to_local(position) / 4;
+	
+	big_gun_instance.position = localPos
+	
+	$Towers.add_child(big_gun_instance)
+	
+	towers_tile_map.erase_cell(1, position)
