@@ -53,6 +53,7 @@ func _on_game_controller_place_tower(tower_type, position):
 	var localPos = towers_tile_map.map_to_local(position) / 4;
 	
 	big_gun_instance.position = localPos
+	big_gun_instance.enemies_node = $Enemies;
 	
 	$Towers.add_child(big_gun_instance)
 	

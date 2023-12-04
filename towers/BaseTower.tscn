@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://jfj72fucy626"]
+[gd_scene load_steps=3 format=3 uid="uid://jfj72fucy626"]
 
 [ext_resource type="Script" path="res://towers/BaseTower.gd" id="1_ulmsq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5buj3"]
+radius = 0.01
 
 [node name="BaseTower" type="Node2D"]
 script = ExtResource("1_ulmsq")
@@ -11,3 +14,16 @@ scale = Vector2(0.25, 0.25)
 [node name="Tower" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 offset = Vector2(2.08165e-12, -20)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="ShootingTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5buj3")
+
+[connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
